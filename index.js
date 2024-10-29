@@ -53,5 +53,9 @@ module.exports = (css, settings) => {
 		.replace(
 			/\/\*%%styled-jsx-placeholder-(\d+)%%\*\//g,
 			(_, id) => `%%styled-jsx-placeholder-${id}%%`
+		)
+		.replace(
+			/styled-jsx-placeholder-(\d+)-/g,
+			(_, id) => `%%styled-jsx-placeholder-${id}%%`
 		);
 };
