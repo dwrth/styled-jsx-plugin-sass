@@ -1,31 +1,57 @@
-const sass = require('node-sass');
+const sass = require('sass-embedded');
 const path = require('path');
 
-module.exports = (css, settings) => {
-  const cssWithPlaceholders = css
-    .replace(/%%styled-jsx-placeholder-(\d+)%%(\w*\s*[),;!{])/g, (_, id, p1) =>
-      `styled-jsx-placeholder-${id}-${p1}`
-    )
-    .replace(/%%styled-jsx-placeholder-(\d+)%%/g, (_, id) =>
-      `/*%%styled-jsx-placeholder-${id}%%*/`
-    )
+module.exports = async (css, settings) => {
+	const cssWithPlaceholders = css
+		.replace(
+			/%%styled-jsx-placeholder-(\d+)%%%(\w*[ ),;!{])/g,
+			(_, id, p1) => `styled-jsx-percent-placeholder-${id}-${p1}`
+		)
+		.replace(
+			/%%styled-jsx-placeholder-(\d+)%%(\w*[ ),;!{])/g,
+			(_, id, p1) => `styled-jsx-placeholder-${id}-${p1}`
+		)
+		.replace(
+			/%%styled-jsx-placeholder-(\d+)%%%/g,
+			(_, id) => `/*%%styled-jsx-percent-placeholder-${id}%%*/`
+		)
+		.replace(
+			/%%styled-jsx-placeholder-(\d+)%%/g,
+			(_, id) => `/*%%styled-jsx-placeholder-${id}%%*/`
+		);
 
-  // Prepend option data to cssWithPlaceholders
-  const optionData = settings.sassOptions && settings.sassOptions.data || "";
-  const data = optionData + "\n" + cssWithPlaceholders;
+	// Ensure settings.sassOptions is defined
+	const sassOptions = settings.sassOptions || {};
+	const optionData = sassOptions.data || '';
+	const data = optionData + '\n' + cssWithPlaceholders;
 
-  const preprocessed = sass.renderSync(
-    Object.assign(
-      {},
-      settings.sassOptions,
-      { data }
-    )).css.toString()
+	const preprocessed = (
+		await sass.compileStringAsync(data, {
+			...sassOptions,
+			loadPaths: [
+				// ...(sassOptions.loadPaths || []),
+				...(settings.babel?.filename
+					? [path.dirname(settings.babel.filename)]
+					: []),
+			],
+		})
+	).css.toString();
 
-  return preprocessed
-    .replace(/styled-jsx-placeholder-(\d+)-(\w*\s*[),;!{])/g, (_, id, p1) =>
-      `%%styled-jsx-placeholder-${id}%%${p1}`
-    )
-    .replace(/\/\*%%styled-jsx-placeholder-(\d+)%%\*\//g, (_, id) =>
-      `%%styled-jsx-placeholder-${id}%%`
-    )
-}
+	return preprocessed
+		.replace(
+			/styled-jsx-percent-placeholder-(\d+)-(\w*[ ),;!{])/g,
+			(_, id, p1) => `%%styled-jsx-placeholder-${id}%%%${p1}`
+		)
+		.replace(
+			/styled-jsx-placeholder-(\d+)-(\w*[ ),;!{])/g,
+			(_, id, p1) => `%%styled-jsx-placeholder-${id}%%${p1}`
+		)
+		.replace(
+			/\/\*%%styled-jsx-percent-placeholder-(\d+)%%\*\//g,
+			(_, id) => `%%styled-jsx-placeholder-${id}%%%`
+		)
+		.replace(
+			/\/\*%%styled-jsx-placeholder-(\d+)%%\*\//g,
+			(_, id) => `%%styled-jsx-placeholder-${id}%%`
+		);
+};
