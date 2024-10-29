@@ -7,8 +7,8 @@ const plugin = require('./index.js');
 const cleanup = (str) => stripIndent(str).trim();
 
 describe('styled-jsx-plugin-sass', () => {
-	it('compiles basic Sass syntax', async () => {
-		const result = await plugin('div { color: red; }', {});
+	it('compiles basic Sass syntax', () => {
+		const result = plugin('div { color: red; }', {});
 		assert.strictEqual(
 			result.trim(),
 			cleanup(`
@@ -19,8 +19,8 @@ describe('styled-jsx-plugin-sass', () => {
 		);
 	});
 
-	it('handles nested styles', async () => {
-		const result = await plugin('div { p { color: blue; } }', {});
+	it('handles nested styles', () => {
+		const result = plugin('div { p { color: blue; } }', {});
 		assert.strictEqual(
 			result.trim(),
 			cleanup(`
@@ -31,8 +31,8 @@ describe('styled-jsx-plugin-sass', () => {
 		);
 	});
 
-	it('processes Sass variables', async () => {
-		const result = await plugin('$color: red; div { color: $color; }', {});
+	it('processes Sass variables', () => {
+		const result = plugin('$color: red; div { color: $color; }', {});
 		assert.strictEqual(
 			result.trim(),
 			cleanup(`
@@ -43,8 +43,8 @@ describe('styled-jsx-plugin-sass', () => {
 		);
 	});
 
-	it('applies mixins correctly', async () => {
-		const result = await plugin(
+	it('applies mixins correctly', () => {
+		const result = plugin(
 			`
         @mixin flex-center {
           display: flex;
@@ -69,8 +69,8 @@ describe('styled-jsx-plugin-sass', () => {
 		);
 	});
 
-	it('compiles media queries', async () => {
-		const result = await plugin(
+	it('compiles media queries', () => {
+		const result = plugin(
 			`
         div {
           color: black;
@@ -96,8 +96,8 @@ describe('styled-jsx-plugin-sass', () => {
 		);
 	});
 
-	it('works with @import', async () => {
-		const result = await plugin('@import "fixture"; p { color: red }', {
+	it('works with @import', () => {
+		const result = plugin('@import "fixture"; p { color: red }', {
 			loadPaths: [path.resolve(__dirname, './fixtures')],
 			babel: { filename: 'fixtures/entry.scss' },
 		});
@@ -115,11 +115,11 @@ describe('styled-jsx-plugin-sass', () => {
 		);
 	});
 
-	it('resolves imports correctly', async () => {
+	it('resolves imports correctly', () => {
 		const filename = 'fixtures/entry.scss';
 		const file = fs.readFileSync(filename);
 
-		const result = await plugin(file.toString(), {
+		const result = plugin(file.toString(), {
 			babel: { filename },
 			loadPaths: [path.resolve(__dirname, './fixtures')],
 		});

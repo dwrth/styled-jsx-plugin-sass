@@ -1,32 +1,31 @@
 {
-  "name": "styled-jsx-plugin-sass",
-  "version": "1.0.0",
-  "description": "Plugin to add Sass support to styled-jsx",
-  "main": "index.js",
-  "scripts": {
-    "test": "mocha test.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/giuseppeg/styled-jsx-plugin-sass.git"
-  },
-  "keywords": [
-    "styled-jsx-plugin",
-    "styled-jsx",
-    "sass"
-  ],
-  "author": "Giuseppe Gurgone",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/giuseppeg/styled-jsx-plugin-sass/issues"
-  },
-  "homepage": "https://github.com/giuseppeg/styled-jsx-plugin-sass#readme",
-  "devDependencies": {
-    "mocha": "^4.0.1",
-    "strip-indent": "^2.0.0"
-  },
-  "dependencies": {
-    "node-sass": "^9.0.0",
-    "sass-embedded": "^1.77.8"
-  }
+	"name": "styled-jsx-plugin-sass",
+	"version": "1.0.0",
+	"description": "Plugin to add Sass support to styled-jsx",
+	"main": "index.js",
+	"scripts": {
+		"test": "mocha test.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/giuseppeg/styled-jsx-plugin-sass.git"
+	},
+	"keywords": [
+		"styled-jsx-plugin",
+		"styled-jsx",
+		"sass"
+	],
+	"author": "Giuseppe Gurgone",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/giuseppeg/styled-jsx-plugin-sass/issues"
+	},
+	"homepage": "https://github.com/giuseppeg/styled-jsx-plugin-sass#readme",
+	"devDependencies": {
+		"mocha": "^10.7.3",
+		"strip-indent": "^2.0.0"
+	},
+	"dependencies": {
+		"sass-embedded": "^1.77.8"
+	}
 }

@@ -1,7 +1,7 @@
 const sass = require('sass-embedded');
 const path = require('path');
 
-module.exports = async (css, settings) => {
+module.exports = (css, settings) => {
 	const cssWithPlaceholders = css
 		.replace(
 			/%%styled-jsx-placeholder-(\d+)%%%(\w*[ ),;!{])/g,
@@ -25,8 +25,8 @@ module.exports = async (css, settings) => {
 	const optionData = sassOptions.data || '';
 	const data = optionData + '\n' + cssWithPlaceholders;
 
-	const preprocessed = (
-		await sass.compileStringAsync(data, {
+	const preprocessed = sass
+		.compileString(data, {
 			...sassOptions,
 			loadPaths: [
 				// ...(sassOptions.loadPaths || []),
@@ -35,7 +35,7 @@ module.exports = async (css, settings) => {
 					: []),
 			],
 		})
-	).css.toString();
+		.css.toString();
 
 	return preprocessed
 		.replace(
