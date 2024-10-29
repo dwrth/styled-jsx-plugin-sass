@@ -1,6 +1,6 @@
 {
 	"name": "styled-jsx-plugin-sass",
-	"version": "1.0.0",
+	"version": "2.0.0",
 	"description": "Plugin to add Sass support to styled-jsx",
 	"main": "index.js",
 	"scripts": {
@@ -15,7 +15,7 @@
 		"styled-jsx",
 		"sass"
 	],
-	"author": "Giuseppe Gurgone",
+	"author": "Giuseppe Gurgone, David Werth",
 	"license": "MIT",
 	"bugs": {
 		"url": "https://github.com/giuseppeg/styled-jsx-plugin-sass/issues"
