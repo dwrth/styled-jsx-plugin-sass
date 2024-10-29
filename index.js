@@ -1,4 +1,4 @@
-const sass = require('sass-embedded');
+const sass = require('sass');
 const path = require('path');
 
 module.exports = (css, settings) => {
