@@ -6,7 +6,7 @@ const plugin = require('./index.js');
 
 const cleanup = (str) => stripIndent(str).trim();
 
-describe('styled-jsx-plugin-sass', () => {
+describe('styled-jsx-dart-sass', () => {
 	it('compiles basic Sass syntax', () => {
 		const result = plugin('div { color: red; }', {});
 		assert.strictEqual(

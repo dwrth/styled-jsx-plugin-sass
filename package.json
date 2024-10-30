@@ -1,26 +1,26 @@
 {
-	"name": "styled-jsx-plugin-sass",
-	"version": "2.0.1",
-	"description": "Plugin to add Sass support to styled-jsx",
+	"name": "styled-jsx-dart-sass",
+	"version": "2.0.3",
+	"description": "Plugin to add Dart Sass support to styled-jsx",
 	"main": "index.js",
 	"scripts": {
 		"test": "mocha test.js"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/giuseppeg/styled-jsx-plugin-sass.git"
+		"url": "git+https://github.com/dwrth/styled-jsx-dart-sass.git"
 	},
 	"keywords": [
 		"styled-jsx-plugin",
 		"styled-jsx",
-		"sass"
+		"dart-sass"
 	],
-	"author": "Giuseppe Gurgone, David Werth",
+	"author": "David Werth",
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/giuseppeg/styled-jsx-plugin-sass/issues"
+		"url": "https://github.com/dwrth/styled-jsx-dart-sass/issues"
 	},
-	"homepage": "https://github.com/giuseppeg/styled-jsx-plugin-sass#readme",
+	"homepage": "https://github.com/dwrth/styled-jsx-dart-sass#readme",
 	"devDependencies": {
 		"mocha": "^10.7.3",
 		"strip-indent": "^2.0.0"
