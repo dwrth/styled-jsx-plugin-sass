@@ -1,6 +1,6 @@
 {
 	"name": "styled-jsx-dart-sass",
-	"version": "2.0.3",
+	"version": "2.0.4",
 	"description": "Plugin to add Dart Sass support to styled-jsx",
 	"main": "index.js",
 	"scripts": {
@@ -26,6 +26,6 @@
 		"strip-indent": "^2.0.0"
 	},
 	"dependencies": {
-		"sass": "^1.77.8"
+		"sass": "^1.80.6"
 	}
 }
