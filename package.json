@@ -22,10 +22,10 @@
 	},
 	"homepage": "https://github.com/dwrth/styled-jsx-dart-sass#readme",
 	"devDependencies": {
-		"mocha": "^10.7.3",
+		"mocha": "^10.8.2",
 		"strip-indent": "^2.0.0"
 	},
 	"dependencies": {
-		"sass": "^1.80.6"
+		"sass": "^1.81.0"
 	}
 }
